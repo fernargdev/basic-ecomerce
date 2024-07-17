@@ -58,6 +58,12 @@ img {
   height: auto;
 }
 
+input[type='number'] {
+  width: 50px;
+  margin: 0 20px;
+  text-align: center;
+}
+
 .display-title {
   font-size: 1.8rem;
   text-align: center;

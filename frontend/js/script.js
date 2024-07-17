@@ -49,9 +49,10 @@
         let num = nums[cell].innerText
         num = num.replace(/[^\d]/g, '')
         num = parseFloat(num)
-        prices.push(num)
+
+        const quantity = nums[cell].nextElementSibling.children[0].value
+        prices.push(num * quantity)
       }
-      // return the prices array
       return prices
     } else {
       return
@@ -85,10 +86,11 @@
         productMarkup += `
           <tr>
           <td><img class="cart-image" src="${product.image}" alt="${product.name}" width="120"></td>
-          <td>
-            ${product.name}
-          </td>
+          <td>${product.name}</td>
           <td>${product.price}</td>
+          <td>
+           <input type="number" min="1" value="${product.quantity}">
+          </td>
           <td><a href="#" data-id="${product.id}" class="remove">X</a></td>
           </tr>
         `
@@ -135,6 +137,7 @@
         image: prodImage,
         name: prodName,
         price: prodPrice,
+        quantity: 1, // añade la cantidad aquí
       })
 
       // add product into into local storage
@@ -243,6 +246,21 @@
       // or empty if no products are left in the cart
 
       // adjust the total
+      displayCartTotal()
+    }
+  })
+
+  cartContent.querySelector('tbody').addEventListener('change', function (e) {
+    if (e.target.type === 'number') {
+      const newQuantity = e.target.value
+      const productId =
+        e.target.parentElement.nextElementSibling.children[0].getAttribute(
+          'data-id'
+        )
+      const lsContent = getLSContent()
+      const product = lsContent.find((product) => product.id === productId)
+      product.quantity = newQuantity
+      setLSContent(lsContent)
       displayCartTotal()
     }
   })
