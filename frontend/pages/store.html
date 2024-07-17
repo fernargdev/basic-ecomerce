@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/store.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header__top">
+            <div class="header__logo">
+                <h1 class="header__title">
+                    Store
+                    <span class="header__subtitle">Best Drinks</span>
+                </h1>
+            </div>
+
+            <div class="header__cart">
+                <ul>
+                    <li class="header__submenu" id="submenu">
+                        <button class="header__cart-btn" id="toggle-cart-btn"><svg class="cart" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z">
+                                </path>
+                            </svg> Your Cart</button>
+                        <div id="shopping-cart" class="shopping-cart-container">
+                            <table id="cart-content">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <p class="total-container" id="total-price"></p>
+                            <a href="#" id="checkout-btn" class="cart-btn">Checkout</a>
+                            <a href="#" id="clear-cart" class="cart-btn">Clear Cart</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container page-content">
+        <h2 class="page-title">Drinks</h2>
+        <div class="grid" id="grid">
+            <div class="card">
+                <img src="../img/image-1.jpeg" class="card__image" alt="">
+                <div class="card__info">
+                    <h4 class="card__title">JOHNNIE WALKER (750ML)</h4>
+                    <p class="card__text">JOHNNIE WALKER</p>
+                    <p class="card__price">$200</p>
+                    <button class="card__btn add-to-cart" data-id="6">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-2.jpeg" class="card__image" alt="">
+                <div class="card__info">
+                    <h4 class="card__title">CHIVAS REGAL 12 (750ML)</h4>
+                    <p class="card__text">CHIVAS</p>
+                    <p class="card__price">$500</p>
+                    <button class="card__btn add-to-cart" data-id="7">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-3.jpeg" class="card__image" alt="">
+                <div class="card__info">
+                    <h4 class="card__title">JACK DANIELS (750ML)</h4>
+                    <p class="card__text">JACK DANIELS</p>
+                    <p class="card__price">$750</p>
+                    <button class="card__btn add-to-cart" data-id="8">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-4.jpeg" alt="" class="card__image">
+                <div class="card__info">
+                    <h4 class="card__title">H.C AñEJO (700CL)</h4>
+                    <p class="card__text">Habana Club</p>
+                    <p class="card__price">$50</p>
+                    <button class="card__btn add-to-cart" data-id="9">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-5.jpeg" alt="" class="card__image">
+                <div class="card__info">
+                    <h4 class="card__title">BLACK TEARS (700ML)</h4>
+                    <p class="card__text">BLACK TEARS</p>
+                    <p class="card__price">$100</p>
+                    <button class="card__btn add-to-cart" data-id="10">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-6.jpeg" alt="" class="card__image">
+                <div class="card__info">
+                    <h4 class="card__title">BALLANTINE (750ML)</h4>
+                    <p class="card__text">BALLANTINE</p>
+                    <p class="card__price">$300</p>
+                    <button class="card__btn add-to-cart" data-id="11">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+            <div class="card">
+                <img src="../img/image-7.jpeg" alt="" class="card__image">
+                <div class="card__info">
+                    <h4 class="card__title">JAMESON (750ML)</h4>
+                    <p class="card__text">JAMESON</p>
+                    <p class="card__price">$400</p>
+                    <button class="card__btn add-to-cart" data-id="12">Add to Cart</button>
+                </div>
+            </div>
+            <!--.card-->
+        </div>
+    </main>
+
+
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
