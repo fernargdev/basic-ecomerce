@@ -44,14 +44,24 @@
     // iterate over each td node and extract the price
     // strip the $ sign from the text, turn the string into
     // a number and push the number into the prices array
+
     if (nums.length > 0) {
       for (let cell = 0; cell < nums.length; cell++) {
         let num = nums[cell].innerText
         num = num.replace(/[^\d]/g, '')
         num = parseFloat(num)
 
-        const quantity = nums[cell].nextElementSibling.children[0].value
+        // TODO:
+        num = parseFloat(num)
+        let quantity =
+          nums[cell].parentElement.querySelector('td:nth-child(4)').innerText
+        quantity = parseInt(quantity, 10) // convierte la cantidad a un número
         prices.push(num * quantity)
+
+        // const quantity =
+        //   nums[cell].parentElement.querySelector('td:nth-child(4)').innerText
+
+        // prices.push(num * quantity)
       }
       return prices
     } else {
@@ -62,9 +72,11 @@
   function displayCartTotal() {
     // display the total cost in the cart
     const prices = getCartItemPrices()
+    console.log(prices)
     let total = 0
     if (prices) {
       total = calculateTotal(prices)
+      console.log(total)
       totalPriceContainer.innerHTML = `<span class="total">Total: $${total.toFixed(
         2
       )}</span>`
@@ -89,7 +101,7 @@
           <td>${product.name}</td>
           <td>${product.price}</td>
           <td>
-           <input type="number" min="1" value="${product.quantity}">
+           ${product.quantity}
           </td>
           <td><a href="#" data-id="${product.id}" class="remove">X</a></td>
           </tr>
@@ -132,12 +144,15 @@
     // create an object representing selected product info
     // and push it into local storage array
     if (!isProductInCart) {
+      const quantity = clickedBtn.parentElement.querySelector(
+        'input[type="number"]'
+      ).value
       lsContent.push({
         id: productId,
         image: prodImage,
         name: prodName,
         price: prodPrice,
-        quantity: 1, // añade la cantidad aquí
+        quantity: quantity, // añade la cantidad aquí
       })
 
       // add product into into local storage
@@ -229,6 +244,21 @@
     }
   })
 
+  productsContainer.addEventListener('change', function (e) {
+    if (e.target.type === 'number') {
+      const newQuantity = e.target.value
+      const productId = e.target.parentElement.parentElement
+        .querySelector('.add-to-cart')
+        .getAttribute('data-id')
+      const lsContent = getLSContent()
+      const product = lsContent.find((product) => product.id === productId)
+      product.quantity = newQuantity
+      setLSContent(lsContent)
+      displayProducts() // Actualiza la visualización del carrito
+      displayCartTotal() // Actualiza el total del carrito
+    }
+  })
+
   // bind removeProduct to click event of the cartContent table
   cartContent.querySelector('tbody').addEventListener('click', function (e) {
     e.preventDefault()
@@ -250,20 +280,20 @@
     }
   })
 
-  cartContent.querySelector('tbody').addEventListener('change', function (e) {
-    if (e.target.type === 'number') {
-      const newQuantity = e.target.value
-      const productId =
-        e.target.parentElement.nextElementSibling.children[0].getAttribute(
-          'data-id'
-        )
-      const lsContent = getLSContent()
-      const product = lsContent.find((product) => product.id === productId)
-      product.quantity = newQuantity
-      setLSContent(lsContent)
-      displayCartTotal()
-    }
-  })
+  // cartContent.querySelector('tbody').addEventListener('change', function (e) {
+  //   if (e.target.type === 'number') {
+  //     const newQuantity = e.target.value
+  //     const productId =
+  //       e.target.parentElement.nextElementSibling.children[0].getAttribute(
+  //         'data-id'
+  //       )
+  //     const lsContent = getLSContent()
+  //     const product = lsContent.find((product) => product.id === productId)
+  //     product.quantity = newQuantity
+  //     setLSContent(lsContent)
+  //     displayCartTotal()
+  //   }
+  // })
 
   // bind the button to clear the cart both to the function that
   // clears the cart and to the function that adjusts the total price
