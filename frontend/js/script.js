@@ -135,7 +135,7 @@
     // the product is not in LS already before adding it
     lsContent.forEach(function (product) {
       if (product.id === productId) {
-        alert('This course is already in your cart.')
+        alert('This product is already in your cart.')
         isProductInCart = true
       }
     })
