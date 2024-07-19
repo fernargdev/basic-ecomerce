@@ -1,3 +1,11 @@
+function isUserAuthenticated() {
+  const userInfo = localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo'))
+    : null
+
+  return userInfo !== null
+}
+
 document.addEventListener('DOMContentLoaded', function (e) {
   const checkoutList = document.querySelector('#checkout-list')
   const totalPriceContainer = document.querySelector('#total-price')
@@ -19,4 +27,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
   checkoutList.innerHTML = productMarkup
   totalPriceContainer.innerHTML = `Total: $${total.toFixed(2)}`
+})
+
+document.querySelector('#pay-now-btn').addEventListener('click', function (e) {
+  if (!isUserAuthenticated()) {
+    if (
+      window.confirm(
+        'Debes iniciar sesión para pagar su orden. Desea autenticarse'
+      )
+    ) {
+      window.location.href = 'auth.html'
+    }
+  } else {
+    alert('Autenticado')
+  }
 })

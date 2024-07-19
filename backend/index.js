@@ -1,4 +1,5 @@
 // packages
+import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 
@@ -11,7 +12,9 @@ import userRoutes from './routes/userRoute.js'
 
 connectDB()
 const app = express()
+app.disable('x-powered-by')
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
