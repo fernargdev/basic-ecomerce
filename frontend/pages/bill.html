@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/bill.css">
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="./store.html" id="back-to-store-btn">Store</a>
+        <a href="./checkout.html" id="back-to-store-btn">Checkout</a>
+        <a href="./auth.html" id="back-to-store-btn">Auth</a>
+        <a href="./bill.html" id="back-to-store-btn">Bill</a>
+    </div>
+
+    <main class="container page-content">
+        <h2 class="page-title">Facturación</h2>
+
+        <form id="billing-form">
+            <label for="name">Nombre y Apellidos:</label>
+            <input type="text" id="name" required>
+
+            <label for="address">Dirección Completa:</label>
+            <input type="text" id="address" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="delivery-address">Dirección de Entrega:</label>
+            <input type="text" id="delivery-address" required>
+
+            <label for="province">Provincia:</label>
+            <select id="province">
+                <!-- Las opciones de la provincia se llenarán dinámicamente -->
+            </select>
+
+            <h3>Contacto Adicional</h3>
+
+            <label for="additional-phone">Teléfono:</label>
+            <input type="tel" id="additional-phone">
+
+            <label for="additional-name">Nombre y Apellidos:</label>
+            <input type="text" id="additional-name">
+
+            <button type="submit" id="submit-btn">Enviar</button>
+        </form>
+    </main>
+
+    <script src="../js/bill.js"></script>
+</body>
+
+</html>
