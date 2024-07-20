@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facturación</title>
+    <!-- JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../styles/index.css">
@@ -23,8 +25,16 @@
     <main class="container page-content">
         <h2 class="page-title">Facturación</h2>
 
+
         <form id="billing-form">
-            <label for="name">Nombre y Apellidos:</label>
+
+            <label for="payment">Total:</label>
+            <input type="text" id="payment" readonly>
+
+            <label for="email">Correo:</label>
+            <input type="text" id="email" readonly>
+
+            <label for="name">Nombre Completo:</label>
             <input type="text" id="name" required>
 
             <label for="address">Dirección Completa:</label>
@@ -37,22 +47,21 @@
             <input type="text" id="delivery-address" required>
 
             <label for="province">Provincia:</label>
-            <select id="province">
-                <!-- Las opciones de la provincia se llenarán dinámicamente -->
-            </select>
+            <input type="text" id="province" readonly>
+
 
             <br><br>
 
             <h3>Contacto Adicional</h3>
 
             <label for="additional-name">Nombre y Apellidos:</label>
-            <input type="text" id="additional-name">
+            <input type="text" id="additional-name" required>
 
             <label for="additional-phone">Teléfono:</label>
-            <input type="tel" id="additional-phone">
+            <input type="tel" id="additional-phone" required>
 
 
-            <button type="submit" id="submit-btn">Enviar</button>
+            <button type="submit" id="submit-btn">Pagar</button>
         </form>
     </main>
 
