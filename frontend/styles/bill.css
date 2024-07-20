@@ -1,0 +1,23 @@
+main,
+form {
+  /* border: 2px solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  /* border: 2px solid; */
+  width: 50vw;
+  padding: 20px;
+}
+
+form * {
+  width: 30vw;
+  margin: 3px 0;
+}
+
+form button {
+  width: 15vw;
+}
