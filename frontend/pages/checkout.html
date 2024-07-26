@@ -8,6 +8,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/checkout.css">
 </head>
 
 <body>
@@ -19,19 +20,25 @@
         <a href="./bill.html" id="back-to-store-btn">Bill</a>
     </div>
 
-    <main class="container page-content">
-        <h2 class="page-title">Checkout</h2>
+    <div class="container page-content">
+        <h1 class="page-title">Checkout</h1>
 
         <div id="checkout-list">
             <!-- Los productos irán aquí -->
         </div>
 
         <br><br><br>
-        <div id="total-price"></div>
-        <button id="pay-now-btn">Pagar ahora</button>
+        <div class="pay-container">
+            <p>
+                Total a pagar:
+                <span id="total-price"></span>
+            </p>
+            <button id="pay-now-btn">Pagar ahora</button>
+        </div>
+
         <br><br><br>
 
-    </main>
+    </div>
 
 
 

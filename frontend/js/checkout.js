@@ -16,17 +16,33 @@ document.addEventListener('DOMContentLoaded', function (e) {
   for (let product of lsContent) {
     productMarkup += `
             <div class="product">
-                <img src="${product.image}" alt="${product.name}" width="120">
-                <p>${product.name}</p>
-                <p>${product.price}</p>
-                <p>${product.quantity}</p>
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-info">
+                <p> 
+                <span class="p-name">Nombre:</span>
+                ${product.name}
+                </p>
+                <p>
+                <span class="p-price">Precio:</span>
+                ${product.price}
+                </p>
+                <p>
+                 <span class="p-quantity">Cantidad:</span>
+                 ${product.quantity}
+                </p>
+                </div>
             </div>
         `
-    total += parseFloat(product.price.replace(/[^\d]/g, '')) * product.quantity
+    // total += parseFloat(product.price.replace(/[^\d]/g, '')) * product.quantity
+
+    let num = product.price
+    num = num.replace(/[^0-9.]/g, '') // Mantén los puntos decimales
+    num = parseFloat(num)
+    total += num * product.quantity
   }
 
   checkoutList.innerHTML = productMarkup
-  totalPriceContainer.innerHTML = `Total: $${total.toFixed(2)}`
+  totalPriceContainer.innerHTML = `$${total.toFixed(2)}`
 })
 
 document.querySelector('#pay-now-btn').addEventListener('click', function (e) {
