@@ -56,5 +56,6 @@ document.querySelector('#pay-now-btn').addEventListener('click', function (e) {
     }
   } else {
     alert('Autenticado')
+    window.location.href = 'bill.html'
   }
 })
